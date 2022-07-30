@@ -6,7 +6,15 @@ A Framework build around the devtools Protocol that enables to build Cross Platf
 Install GraalVM community edition
 Install graal-node
 Create a Project with npm init
-npm install puppeteer (be aware that this installs chromium into the node_modules/puppeteer/.chromium folder you should maybe at present not mess with that as this works on the most platforms at present so if you bundle for multiple platforms run npm install on that platform. 
+```shell
+mkdir myproject
+cd myproject
+npm init
+npm install -g puppeteer && npm link puppeteer
+````
+be aware that this installs chromium into the ```$(npm prefix -g)/lib/node_modules/puppeteer/.local-chromium``` folder you 
+should maybe at present not mess with that as this works on #the most platforms at present so if 
+ you bundle for multiple platforms run npm install on that platform. 
 
 use the following example code put it into your npm project in index.js
 ```js
@@ -104,3 +112,10 @@ disableGoogleKeysMissingMessage();
   });
 })();
 ```
+
+running it
+```shell
+node index.js
+```
+
+will open the app in a maximized window it will creat a new temp profile so no access to your current browser data all is fully isolated and secure.
